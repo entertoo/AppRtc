@@ -1,0 +1,10 @@
+#启动coturn服务器
+turnserver -o -a -f -user=test:123456 -r north.gov
+#用于http测试
+roomLink = roomLink.substring("http", "https");
+#启动房间服务器
+/root/rtc/google-cloud-sdk/bin/dev_appserver.py ./out/app_engine
+#启动信令服务器
+/collider/collidermain -port=8089 -tls=false -room-server="http://132.232.72.155:8080"
+#启动ICE服务器
+node index.js
