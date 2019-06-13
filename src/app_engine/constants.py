@@ -38,8 +38,25 @@ ICE_SERVER_OVERRIDE = None
 #   }
 # ]
 
-ICE_SERVER_BASE_URL = 'https://networktraversal.googleapis.com'
-ICE_SERVER_URL_TEMPLATE = '%s/v1alpha/iceconfig?key=%s'
+
+ICE_SERVER_OVERRIDE = [
+	{
+		"urls":[
+			"turn:132.232.72.155:3478?transport=udp",
+			"turn:132.232.72.155:3478?transport=tcp"
+		],
+		"username": "test",
+		"credential": "123456",
+	},
+	{
+		"urls":[
+			"stun:132.232.72.155:3478"
+		]
+	}
+]
+
+ICE_SERVER_BASE_URL = 'http://132.232.72.155:3033'
+ICE_SERVER_URL_TEMPLATE = '%s/iceconfig?key=%s'
 ICE_SERVER_API_KEY = os.environ.get('ICE_SERVER_API_KEY')
 
 # Dictionary keys in the collider instance info constant.
@@ -47,11 +64,11 @@ WSS_INSTANCE_HOST_KEY = 'host_port_pair'
 WSS_INSTANCE_NAME_KEY = 'vm_name'
 WSS_INSTANCE_ZONE_KEY = 'zone'
 WSS_INSTANCES = [{
-    WSS_INSTANCE_HOST_KEY: 'apprtc-ws.webrtc.org:443',
+	WSS_INSTANCE_HOST_KEY: '132.232.72.155:8089',
     WSS_INSTANCE_NAME_KEY: 'wsserver-std',
     WSS_INSTANCE_ZONE_KEY: 'us-central1-a'
 }, {
-    WSS_INSTANCE_HOST_KEY: 'apprtc-ws-2.webrtc.org:443',
+	WSS_INSTANCE_HOST_KEY: '132.232.72.155:8089',
     WSS_INSTANCE_NAME_KEY: 'wsserver-std-2',
     WSS_INSTANCE_ZONE_KEY: 'us-central1-f'
 }]
